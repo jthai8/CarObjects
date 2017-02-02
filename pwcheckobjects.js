@@ -1,22 +1,27 @@
-var id = " ";
-var password = " ";
-
-function getCred(id, password){
-  id = prompt("Please enter your ID Name");
-  password = prompt ("Please enter your password");
-}
+function getCred(userId, userPass){
+  userId = prompt("Please enter your ID Name");
+  userPass = prompt ("Please enter your password");
+};
 
 var goodLogIn = { valid: true };
-var badLogIn = { valid: false, reason: "user ID cannot contain equal password"};
+var badLogIn = { valid: false, reason: "password must include a !, # or $"};
+var exCheck = userPass.includes("!", 0);
+var dolCheck = userPass.includes("$");
+var hashCheck = userPass.includes("#");
 
-function checkId(id, password){
-  getCred();
-  if (id === password) {
-    alert (badLogIn.reason);
-  } else {
+function pointCheck(exCheck) {
+  if(exCheck === true) {
     alert (goodLogIn.valid);
+  } else {
+    alert (badLogIn.reason);
   }
 }
+
+//pointCheck will not work in this function
+function checkId(){
+  getCred();
+  pointCheck();
+};
 
 // function checkId(id, password){
 //   getCred();
